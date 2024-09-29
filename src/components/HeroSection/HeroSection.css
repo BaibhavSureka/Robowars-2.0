@@ -7,11 +7,6 @@ h1.herologo {
   font-size: 3rem;
 }
 
-body {
-  background-color: #161719;
-  font-family: "Poppins", sans-serif;
-}
-
 .hero-section {
   margin-top: 50px;
   padding: 0 5%;
@@ -23,6 +18,8 @@ body {
   justify-content: space-between;
   align-items: center;
   min-height: 80vh;
+  margin-bottom: -15vh;
+  background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fmechanic-wallpaper%2F23&psig=AOvVaw28KNtYAPYniwAxDUn8eGfx&ust=1726416382588000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPj5ufDowogDFQAAAAAdAAAAABAJ");
 }
 
 .title {
@@ -31,21 +28,20 @@ body {
   font-weight: bolder;
   font-size: 40px;
   font-family: "Russo One", sans-serif;
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
 
 #three-robot-model {
-  
-  height: 40vw; 
+  height: 40vw;
   max-width: 500px;
-  max-height: 500px;
-  min-width: 300px; 
-  min-height: 300px;
-  margin-right: 60px; 
+  max-height: 500vh;
+  min-width: 300px;
+  min-height: 900px;
+  margin-right: 60px;
   display: flex;
   justify-content: center;
-  margin-top: -2vh;
-  overflow: hidden; 
+  margin-top: 3vh;
+  overflow: hidden;
 }
 
 .content {
@@ -55,6 +51,7 @@ body {
   align-items: flex-start;
   text-align: left;
   width: 100%;
+  margin-top: -7vh;
 }
 
 .content h2 {
@@ -71,6 +68,7 @@ body {
   font-size: 18px;
   line-height: 1.8;
   margin: 20px 0;
+  text-align: center;
   max-width: 600px;
 }
 
@@ -102,22 +100,30 @@ button:hover {
   background-color: white;
   color: #d64e2e;
 }
-
+@media (max-width: 1300px) {
+  #three-robot-model {
+    margin-top: -13vh;
+  }
+  .content {
+    margin-top: -40vh;
+  }
+}
 /* Media Query for Small Screens */
 @media (max-width: 768px) {
   .hero-section {
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
+    margin-bottom: 15vh;
   }
 
   #three-robot-model {
-    width: 45vw; 
+    width: 45vw;
     height: 45vw;
     margin-right: 0;
     margin-bottom: 20px;
-    max-width: 250px; 
+    max-width: 250px;
     max-height: 250px;
-    margin-top: -15vh;
+    margin-top: -20vh;
   }
 
   .title {
@@ -128,7 +134,7 @@ button:hover {
   .content {
     text-align: center;
     align-items: center;
-    margin-top: 18vh;
+    margin-top: -50vh;
   }
 
   .content h2 {
@@ -147,7 +153,7 @@ button:hover {
   }
 
   .buttons button {
-    width: 80%; 
+    width: 80%;
     max-width: 250px;
   }
 }

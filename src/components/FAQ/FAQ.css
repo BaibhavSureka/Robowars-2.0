@@ -35,12 +35,8 @@
   transform: rotate(135deg);
 }
 .faq-tab label h2 {
-  background: rgb(169, 45, 0);
-  background: linear-gradient(
-    90deg,
-    rgba(169, 45, 0, 1) 0%,
-    rgba(255, 114, 39, 0.9) 100%
-  );
+  background: #e3571a;
+  background: linear-gradient(90deg, #d02514 0%, #e3571a 50%, #ef6d1e 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,13 +50,13 @@
   font-size: 1.5rem;
 }
 .faq-content {
-  transition: 1s;
   max-height: 0;
   overflow: hidden;
   z-index: 10;
 }
 .faq-tab input[type="radio"]:checked ~ .faq-content {
-  max-height: 100vh;
+  max-height: 60vh;
+  min-height: 10vh;
 }
 .faq-content p {
   position: relative;

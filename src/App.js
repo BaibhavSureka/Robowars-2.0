@@ -5,17 +5,29 @@ import HeroSection from "./components/HeroSection/HeroSection";
 import Navbar from "./components/Navbar/Navbar";
 import Gallery from "./components/Gallery/Gallery";
 import Sponsors from "./components/Sponsors/Sponsors";
-import Categories from "./components/Categories/Categories";
+// import Categories from "./components/Categories/Categories";
 import { Route, Routes } from "react-router-dom";
 import Tournament from "./components/Tournament/Tournament";
 import Loadingpage from "./components/Loadingpage/Loadingpage";
 import { useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
-
+import CursorTrail from "./components/Cursoranimation/Cursoranimation";
+import Watchlive from "./components/WatchLive/Watchlive";
+import Fixture from "./components/Fixture/Fixture";
 
 function App() {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1000);
+
   const [a, setA] = useState(100);
   const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1000);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   useEffect(() => {
     if (a) {
       setTimeout(() => {
@@ -24,7 +36,7 @@ function App() {
     } else {
       setTimeout(() => {
         setLoading(false);
-      }, 1500);
+      }, 2500);
     }
   }, [a]);
   const controls = useAnimation();
@@ -36,37 +48,55 @@ function App() {
     });
   }, [controls]);
   return (
-    <div className="App" style={{ overflowX: "hidden", height: "100vh" }}>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            loading ? (
-              <Loadingpage value={100 - a} />
-            ) : (
+      <div className="App" style={{ overflowX: "hidden", height: "100vh" }}>
+        {!loading && isLargeScreen && <CursorTrail />}
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              loading ? (
+                <Loadingpage value={100 - a} />
+              ) : (
+                <div>
+                  <Navbar />
+                  <HeroSection />
+                  <About />
+                  {/*<Categories />*/}
+                  <Gallery />
+                  <FAQ />
+                  <Sponsors />
+                  <Contact />
+                </div>
+              )
+            }
+          />
+          <Route
+            path="/tournament"
+            element={
               <div>
-                <Navbar />
-                <HeroSection />
-                {/* <About /> */}
-                <Categories />
-                <Gallery />
-                <FAQ />
-                <Sponsors />
-                <Contact />
+                <Tournament />
               </div>
-            )
-          }
-        />
-        <Route
-          path="/tournament"
-          element={
-            <div>
-              <Tournament />
-            </div>
-          }
-        />
-      </Routes>
-    </div>
+            }
+          />
+          <Route
+            path="/fixture"
+            element={
+              <div>
+                <Fixture />
+              </div>
+            }
+          />
+          <Route
+            path="/watchlive"
+            element={
+              <div>
+                <Watchlive />
+              </div>
+            }
+          />
+        </Routes>
+      </div>
   );
 }
 

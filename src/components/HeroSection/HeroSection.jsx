@@ -1,32 +1,65 @@
-import React, { useEffect, useRef } from 'react';
-import './HeroSection.css';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from "react";
+import "./HeroSection.css";
+import { Route, useNavigate } from "react-router-dom";
+import { motion, useAnimation, useInView } from "framer-motion";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 const HeroSection = () => {
+  const handleWatchLiveClick = () => {
+    navigate("/watchlive"); // Add this function for Watch Live navigation
+  };
   const navigate = useNavigate();
   const threeContainerRef = useRef(null);
+  const inView = useInView(threeContainerRef, { once: true });
+  const controls = useAnimation();
+  if (inView) {
+    controls.start("visible");
+  }
 
   const handleMatchesClick = () => {
-    navigate('/tournament');
+    navigate("/fixture");
   };
 
   useEffect(() => {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      50, // Reduced FOV to lessen perspective distortion
+      window.innerWidth / window.innerHeight,
+      1,
+      1000
+    );
+
     const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(500, 500);  // Increased the size to match the larger container
-    document.getElementById("three-robot-model").appendChild(renderer.domElement);
+    renderer.setSize(700, 700);
+    document
+      .getElementById("three-robot-model")
+      .appendChild(renderer.domElement);
 
     const loader = new GLTFLoader();
-    loader.load("ROBOWARSmainLOGO.glb", (gltf) => {
+    loader.load("untitledhello3_new.gltf", (gltf) => {
       const model = gltf.scene;
       model.rotation.y = Math.PI / 4;
 
-      model.scale.set(1.6, 1.6, 1.6); // Increased the model size
+      const adjustModelScale = () => {
+        if (window.innerWidth < 600) {
+          model.scale.set(0.5, 1, 0.5);
+        } else if (window.innerWidth < 1300) {
+          model.scale.set(2.2, 1.2, 1.2); // Increase scale for smaller screens
+        } else {
+          model.scale.set(1.4, 1.4, 1.4); // Default scale for larger screens
+        }
+      };
+
+      adjustModelScale();
+
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.material.color.set(0xffffff);
+        }
+      });
+
       scene.add(model);
 
       const controls = new OrbitControls(camera, renderer.domElement);
@@ -35,12 +68,15 @@ const HeroSection = () => {
       controls.enableZoom = false;
       controls.maxPolarAngle = Math.PI / 2;
 
-      camera.position.set(0, 0, 5.5);
+      camera.position.set(0, 0, 10); // Move camera farther along the z-axis to reduce perspective distortion
+      const light = new THREE.PointLight(0xff0000, 1, 100);
+      light.position.set(50, 50, 50);
+      scene.add(light);
 
       const ambientLight = new THREE.AmbientLight(0xffffff, 1);
       scene.add(ambientLight);
 
-      const directionalLight = new THREE.DirectionalLight(0xff8c00, 2);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
       directionalLight.position.set(0, 10, 10).normalize();
       scene.add(directionalLight);
 
@@ -54,8 +90,8 @@ const HeroSection = () => {
     });
 
     const handleResize = () => {
-      const newWidth = 500;
-      const newHeight = 500;
+      const newWidth = 900;
+      const newHeight = 1000;
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(newWidth, newHeight);
@@ -73,21 +109,39 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <motion.div className="hero-section">
+    <motion.div
+      className="hero-section"
+      id="hero"
+      ref={threeContainerRef}
+      variants={{
+        hidden: { opacity: 0.8, x: -200 },
+        visible: { opacity: 1, x: 0 },
+      }}
+      initial="hidden"
+      animate={controls}
+      transition={{ duration: 1 }}
+    >
       <div>
+        <div id="three-robot-model"></div>
+      </div>
+      <div className="content">
         <div className="title">
           <h1 className="herologo">ROBOWARS</h1>
         </div>
-        <div id="three-robot-model" ref={threeContainerRef}></div>
-      </div>
-      <div className="content">
-        <h2>FORGE<div>.</div>BATTLE<div>.</div>WRECK</h2>
+        <h2>
+          FORGE<div>.</div>BATTLE<div>.</div>WRECK
+        </h2>
         <p>
-          EXPERIENCE THE THRILL OF COMBAT ROBOTICS AT ROBOWARS. REGISTER NOW TO BOOK YOUR SEAT AND WITNESS THE CLASH OF ROBOTS.
+          EXPERIENCE THE THRILL OF COMBAT ROBOTICS AT ROBOWARS. REGISTER NOW TO
+          BOOK YOUR SEAT AND WITNESS THE CLASH OF ROBOTS.
         </p>
         <div className="buttons">
-          <button className="watch-live">Watch Live</button>
-          <button className="matches" onClick={handleMatchesClick}>Matches</button>
+          <button className="watch-live" onClick={handleWatchLiveClick}>
+            Watch Live
+          </button>
+          <button className="matches" onClick={handleMatchesClick}>
+            Matches
+          </button>
         </div>
       </div>
     </motion.div>

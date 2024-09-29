@@ -46,7 +46,7 @@ const Contact = () => {
     }, []);
 
     return (
-      <div className="logo">
+      <div className="contact_logo">
         {windowWidth > 1188 ? (
           <img src={robovitics_desktop} alt="Desktop Logo" />
         ) : (
@@ -104,6 +104,7 @@ const Contact = () => {
                     className="tw-relative tw-flex tw-justify-center tw-items-center tw-p-5 tw-h-52 tw-w-78 tw-bg-neutral-900 tw-rounded-2xl tw-outline tw-outline-slate-400 tw--outline-offset-8 tw-origin-bottom-right tw-overflow-hidden tw-mb-[1rem] tw-transition tw-duration-500 hover:tw-rotate-12
     before:tw-absolute before:tw-w-20 before:tw-h-20 before:tw-bg-[#d64e2e] before:tw-rounded-full before:tw-blur-xl before:tw-top-20 before:tw-right-16 before:tw-transition before:tw-duration-500 hover:before:tw-translate-y-12 hover:before:tw--translate-x-32
     after:tw-absolute after:tw-w-24 after:tw-h-24 after:tw-bg-[#d64e2e] after:tw-rounded-full after:tw-blur-xl after:tw-bottom-32 after:tw-right-16 after:tw-transition after:tw-duration-500 hover:after:tw-translate-x-24"
+                    style={{ marginTop: "20px" }}
                   >
                        {" "}
                     <div className="tw-z-10 tw-flex tw-flex-col tw-items-center tw-gap-2">

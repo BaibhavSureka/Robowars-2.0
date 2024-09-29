@@ -1,12 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import "./Gallery.css";
-import pub4 from "../../assets/publication4.jpg";
-import pub3 from "../../assets/publication3.jpg";
-import pub2 from "../../assets/publication2.jpg";
-import pub1 from "../../assets/publication1.jpg";
 
-const images = [pub1, pub2, pub3, pub4, pub1];
+const images = ["https://res.cloudinary.com/dtuqpup4a/image/upload/fl_preserve_transparency/v1727411412/img1_vxxuqd.jpg?_s=public-apps", "https://res.cloudinary.com/dtuqpup4a/image/upload/fl_preserve_transparency/v1727411415/img4_cjreoa.jpg?_s=public-apps", "https://res.cloudinary.com/dtuqpup4a/image/upload/fl_preserve_transparency/v1727411419/img3_zxgemk.jpg?_s=public-apps", "https://res.cloudinary.com/dtuqpup4a/image/upload/fl_preserve_transparency/v1727411415/img4_cjreoa.jpg?_s=public-apps", "https://res.cloudinary.com/dtuqpup4a/image/upload/fl_preserve_transparency/v1727411415/img4_cjreoa.jpg?_s=public-apps"];
 
 const Gallery = () => {
   const [positions, setPositions] = useState([0, 1, 2, 3, 4]);
@@ -31,7 +27,7 @@ const Gallery = () => {
 
   return (
     <>
-      <h1 className="mediaText">Publications and Media</h1>
+      <h1 className="mediaText">GALLERY</h1>
       <motion.div
         ref={ref}
         variants={{
@@ -48,15 +44,17 @@ const Gallery = () => {
               key={index}
               className="item"
               data-pos={pos}
-              onClick={() => setPositions((prevPositions) => {
-                const newPositions = [...prevPositions];
-                const heroIndex = newPositions.indexOf(0);
-                [newPositions[heroIndex], newPositions[index]] = [
-                  newPositions[index],
-                  newPositions[heroIndex],
-                ];
-                return newPositions;
-              })}
+              onClick={() =>
+                setPositions((prevPositions) => {
+                  const newPositions = [...prevPositions];
+                  const heroIndex = newPositions.indexOf(0);
+                  [newPositions[heroIndex], newPositions[index]] = [
+                    newPositions[index],
+                    newPositions[heroIndex],
+                  ];
+                  return newPositions;
+                })
+              }
             >
               <img src={images[index]} alt={`Gallery item ${index}`} />
             </div>

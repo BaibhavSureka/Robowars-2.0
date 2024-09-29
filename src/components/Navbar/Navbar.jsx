@@ -2,7 +2,8 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 import { HashLink as Link } from "react-router-hash-link";
 import robovitics from "../../assets/robovitics logo.png";
-import gravitas from "../../assets/gravitas-logo.png";
+import gravitas from "../../assets/newgravlogo.svg";
+import hamburger from "../../assets/hamburger.png";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -86,44 +87,44 @@ const Navbar = () => {
             aria-controls="navbarCollapse"
             aria-expanded="false"
             aria-label="Toggle navigation"
-            style={{ outline: "none" }}
+            style={{ background: "none" }}
           >
-            <span class="navbar-toggler-icon"></span>
+            {window.innerWidth < 900 ? <img src={hamburger} alt="" /> : null}
           </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2">
-              <li class="nav-item">
-                <Link to="#home" class="link">
+          <div className="collapse navbar-collapse" id="navbarCollapse">
+            <ul className="navbar-nav me-auto mb-2">
+              <li className="nav-item">
+                <Link to="#home" className="link">
                   <img src={robovitics} alt="" />
                 </Link>
               </li>
-              <li class="nav-item text-link">
-                <Link to="#hero" class="link no-wrap">
+              <li className="nav-item text-link">
+                <Link to="#hero" className="link no-wrap">
                   Home
                 </Link>
               </li>
-              <li class="nav-item text-link">
-                <Link to="#aboutUsSection" class="link no-wrap">
+              <li className="nav-item text-link">
+                <Link to="#aboutUsSection" className="link no-wrap">
                   About Us
                 </Link>
               </li>
-              <li class="nav-item text-link">
-                <Link to="#categories" class="link no-wrap">
-                  Categories
+              <li className="nav-item text-link">
+                <Link to="/fixture" className="link no-wrap">
+                  Matches
                 </Link>
               </li>
-              <li class="nav-item text-link">
-                <Link to="#faqsection" class="link no-wrap">
+              <li className="nav-item text-link">
+                <Link to="#faqsection" className="link no-wrap">
                   FAQs
                 </Link>
               </li>
-              <li class="nav-item text-link">
-                <Link to="#contact" class="link no-wrap">
+              <li className="nav-item text-link">
+                <Link to="#contact" className="link no-wrap">
                   Contact Us
                 </Link>
               </li>
-              <li class="nav-item gravitas-logo">
-                <Link to="#home" class="link last">
+              <li className="nav-item gravitas-logo">
+                <Link to="#home" className="link last">
                   <img src={gravitas} alt="" style={{ marginTop: "-25px" }} />
                 </Link>
               </li>

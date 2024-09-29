@@ -66,11 +66,6 @@
   }
 }
 
-
-
-
-
-
 .contact .php-email-form {
   width: 100%;
 }
@@ -156,7 +151,7 @@
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type="submit"] {
   background: #cda45e;
   border: 0;
   padding: 10px 35px;
@@ -164,7 +159,7 @@
   transition: 0.4s;
   border-radius: 50px;
 }
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type="submit"]:hover {
   background: #d3af71;
 }
 @keyframes animate-loading {
@@ -187,31 +182,30 @@
   align-items: center;
   display: flex;
   cursor: pointer;
-  overflow:hidden; 
+  overflow: hidden;
 }
-
 
 @keyframes spin {
   0% {
-    background-position:0 0;
+    background-position: 0 0;
   }
   50% {
-    background-position:200% 100%;
+    background-position: 200% 100%;
   }
- 100% {
-    background-position:0 0;
+  100% {
+    background-position: 0 0;
   }
 }
 
-.logo {
+.contact_logo {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   transition: all 0.6s ease-in-out;
 }
 
-.logo .logo-svg {
+.contact_logo .logo-svg {
   fill: white;
   width: 30px;
   height: 30px;
@@ -264,7 +258,13 @@
 }
 
 .box1::before {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #ff53d4 60%, #62c2fe 90%);
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #ff53d4 60%,
+    #62c2fe 90%
+  );
 }
 
 .box1:hover::before {
@@ -284,7 +284,7 @@
 }
 
 .box2::before {
-  background: radial-gradient(circle at 30% 107%, #91e9ff 0%, #00ACEE 90%);
+  background: radial-gradient(circle at 30% 107%, #91e9ff 0%, #00acee 90%);
 }
 
 .box2:hover::before {
@@ -323,7 +323,8 @@
   transition-delay: 0.6s;
 }
 .box4::before {
-  background: radial-gradient(circle at 30% 107%, #91e9ff 0%, #00ACEE 90%);}
+  background: radial-gradient(circle at 30% 107%, #91e9ff 0%, #00acee 90%);
+}
 
 .box4:hover::before {
   opacity: 1;
@@ -342,7 +343,7 @@
   left: -1px;
 }
 
-.card1:hover .logo {
+.card1:hover .contact_logo {
   transform: translate(0, 0);
   top: 20px;
   left: 20px;
@@ -355,75 +356,73 @@
 }
 .temp {
   display: flex;
-  flex-direction: column;;
+  flex-direction: column;
 }
 
-.contact-box{
+.contact-box {
   max-width: 30vw;
   margin-left: -40px;
 }
-.war-logo{
+.war-logo {
   margin-left: 45px;
   margin-right: 45px;
-  height:30rem;
-} 
+  height: 30rem;
+}
 
 @media only screen and (max-width: 1188px) {
   .containerOfFooter {
-    margin:0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-  
   }
 
   .containerOfFooter img {
     height: 30rem;
     position: relative;
     top: 2rem;
-    left:2rem;
-    visibility:visible;
+    left: 2rem;
+    visibility: visible;
   }
-  
+
   .contact-box {
     max-width: 100vw;
     margin-left: 0;
   }
-  
+
   .war-logo {
     margin-left: 0;
   }
-  
+
   .card1 {
     width: 100%;
     border-radius: 20px;
     width: 20rem;
     height: 29rem;
-    left:12rem;
+    left: 12rem;
     position: relative;
-    top:2rem;
+    top: 2rem;
     margin-top: 2rem;
   }
-  
-  
-  .logo {
+
+  .contact_logo {
     position: absolute;
-    top:50;
-    left:8rem;
-    height:33rem;
-    width:16rem;
-    transform: translate(-50%,-50%);
+    top: 50;
+    left: 8rem;
+    height: 33rem;
+    width: 16rem;
+    transform: translate(-50%, -50%);
     transition: all 0.6s ease-in-out;
   }
   .card1:hover {
     transform: scale(1.1);
   }
-  
+
   .card1:hover .box {
     bottom: -1px;
     left: -1px;
   }
-  
-  .card1:hover .logo {
+
+  .card1:hover .contact_logo {
     transform: translate(0, 0);
     top: 0;
     left: 0;
@@ -446,7 +445,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
   }
 
   .contact-box {
@@ -470,46 +468,42 @@
     border-radius: 20px;
     width: 20rem;
     height: 29rem;
-    left:0rem;
+    left: 0rem;
     position: relative;
-    top:2rem;
+    top: 2rem;
     margin-top: 2rem;
   }
-  
-  
-  .logo {
+
+  .contact_logo {
     position: absolute;
-    top:50;
-    left:8rem;
-    height:33rem;
-    width:16rem;
-    transform: translate(-50%,-50%);
+    top: 50;
+    left: 8rem;
+    height: 33rem;
+    width: 16rem;
+    transform: translate(-50%, -50%);
     transition: all 0.6s ease-in-out;
   }
   .card1:hover {
     transform: scale(1.05);
   }
-  
+
   .card1:hover .box {
     bottom: -1px;
     left: -1px;
   }
-  
-  .card1:hover .logo {
+
+  .card1:hover .contact_logo {
     transform: translate(0, 0);
     top: 0;
     left: 0;
   }
 
-
   .war-logo {
     margin-left: 0;
   }
-  
+
   .temp {
     flex-direction: column;
     align-items: center;
   }
 }
-
- 

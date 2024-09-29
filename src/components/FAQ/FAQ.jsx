@@ -1,19 +1,25 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import "./FAQ.css";
+
 const FAQ = () => {
   const controls = useAnimation();
-  // Ref for in-view detection
+  const [activeIndex, setActiveIndex] = useState(null); // Track the currently opened FAQ
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
-  // Start animation when in view
   if (inView) {
     controls.start("visible");
   }
+
+  // Function to handle FAQ toggle
+  const toggleFAQ = (index) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
   return (
     <div>
-      <h1 class="faqText">FAQ</h1>
+      <h1 className="faqText">FAQ</h1>
       <motion.div
         className="faq-container"
         id="faqsection"
@@ -26,85 +32,73 @@ const FAQ = () => {
         animate={controls}
         transition={{ duration: 1 }}
       >
-        <div className="faq-tab">
-          <input type="radio" name="acc" id="acc1" />
-          <label htmlFor="acc1">
-            <h2
+        {faqData.map((faq, index) => (
+          <div className="faq-tab" key={index}>
+            {/* Header section that toggles the FAQ */}
+            <div
+              className="faq-header"
+              onClick={() => toggleFAQ(index)}
               style={{
-                marginBottom: "0px",
+                cursor: "pointer",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
                 padding: "15px",
+                backgroundColor: activeIndex === index ? "#ef6d1e" : "#d64e2e", // Change background color when active
+                color: "white",
+                border: "1px solid white",
               }}
             >
-              01
-            </h2>
-            <h3>When and where is Robowars happening?</h3>
-          </label>
-          <div className="faq-content">
-            <p>
-              Robowars will be happening during Gravitas and will befrom 27th
-              sep to 29th sep at the SJT Ground.Stay tuned for the timings!
-            </p>
-          </div>
-        </div>
-        <div className="faq-tab">
-          <input type="radio" name="acc" id="acc2" />
-          <label htmlFor="acc2">
-            <h2
+              <h2>{`0${index + 1}`}</h2>
+              <h3>{faq.question}</h3>
+              <span>{activeIndex === index ? "×" : "+"}</span>
+            </div>
+
+            {/* Animated FAQ content */}
+            <motion.div
+              className="faq-content"
+              initial={{ opacity: 0, x: -100, maxHeight: 0 }}
+              animate={
+                activeIndex === index
+                  ? { opacity: 1, x: 0, maxHeight: 200 }
+                  : { opacity: 0, x: -100, maxHeight: 0 }
+              }
+              transition={{ duration: 0.5, ease: "easeInOut" }}
               style={{
-                marginBottom: "0px",
-                padding: "15px",
+                overflow: "hidden",
+                padding: activeIndex === index ? "10px" : "0px",
               }}
             >
-              02
-            </h2>
-            <h3>How can you attend this event?</h3>
-          </label>
-          <div className="faq-content">
-            <p>
-              Go to Gravitas website and search for robowars and register for
-              the event!
-            </p>
+              <p style={{ color: "white" }}>{faq.answer}</p>
+            </motion.div>
           </div>
-        </div>
-        <div className="faq-tab">
-          <input type="radio" name="acc" id="acc3" />
-          <label htmlFor="acc3">
-            <h2
-              style={{
-                marginBottom: "0px",
-                padding: "15px",
-              }}
-            >
-              03
-            </h2>
-            <h3>Who is eligible to participate?</h3>
-          </label>
-          <div className="faq-content">
-            <p>
-              If you’re a part of a team that builds bots and bots follow our
-              regulations. Check out the rulebook above!
-            </p>
-          </div>
-        </div>
-        <div className="faq-tab">
-          <input type="radio" name="acc" id="acc4" />
-          <label htmlFor="acc4">
-            <h2
-              style={{
-                marginBottom: "0px",
-                padding: "15px",
-              }}
-            >
-              04
-            </h2>
-            <h3>How long is the event?</h3>
-          </label>
-          <div className="faq-content">
-            <p>It happens for 4 hours throughout the day for upto 3 days!</p>
-          </div>
-        </div>
+        ))}
       </motion.div>
     </div>
   );
 };
+
+// Example FAQ data array
+const faqData = [
+  {
+    question: "When and where is Robowars happening?",
+    answer:
+      "Robowars will be happening during Gravitas and will be from 27th Sep to 29th Sep at the SJT Ground. Stay tuned for the timings!",
+  },
+  {
+    question: "How can you attend this event?",
+    answer:
+      "Go to the Gravitas website and search for robowars to register for the event!",
+  },
+  {
+    question: "Who is eligible to participate?",
+    answer:
+      "If you’re a part of a team that builds bots and bots follow our regulations. Check out the rulebook above!",
+  },
+  {
+    question: "How long is the event?",
+    answer: "It happens for 4 hours throughout the day for up to 3 days!",
+  },
+];
+
 export default FAQ;

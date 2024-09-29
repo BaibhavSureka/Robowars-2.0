@@ -15,7 +15,8 @@
   opacity: 0; /* Initially hidden */
 }
 
-.winner-section, .tournament-bracket {
+.winner-section,
+.tournament-bracket {
   animation: slide-in-left 1s ease-in-out forwards;
   opacity: 0;
 }
@@ -34,7 +35,6 @@
   animation-delay: 0.6s;
 }
 
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -47,8 +47,8 @@
   display: inline-block;
   margin: 0;
   font-size: 17px;
-  font-weight: 800; 
-  color:#090101
+  font-weight: 800;
+  color: #090101;
 }
 
 .header p {
@@ -69,11 +69,6 @@
   margin-top: 10px; /* Adjust the spacing between the content and the line */
 }
 
-
-
-
-
-
 .content {
   /* Add any specific styles for the content section here */
   display: flex;
@@ -81,31 +76,30 @@
   align-items: center;
 }
 
-
-
-.winner-section h1{
-  font-size: 30px;
- 
-
+.winner-section h1 {
+  font-size: 25px;
+  margin-left: -90px;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Ensures that content is not visible if it overflows */
 }
-.winner-section{
+.winner-section {
   margin-right: 750px;
   margin-top: 20px;
-  
-  width:250px;
+
+  width: 250px;
   height: 50px;
   padding: 5px;
   margin-left: 120px;
 }
-.navbar {
-  background-color:rgb(15, 13, 13);
+.tournament-navbar {
+  background-color: rgb(15, 13, 13);
   display: flex;
   text-align: center;
   justify-content: center;
   gap: 50px;
 }
 
-.navbar button {
+.tournament-navbar button {
   background: none;
   border: none;
   padding: 10px 20px;
@@ -116,8 +110,8 @@
   transition: color 0.3s ease;
 }
 
-.navbar button::after {
-  content: '';
+.tournament-navbar button::after {
+  content: "";
   position: absolute;
   width: 0;
   height: 2px;
@@ -128,23 +122,22 @@
   transition: width 0.3s ease;
 }
 
-.navbar button.active {
+.tournament-navbar button.active {
   color: #e06f06;
 }
 
-.navbar button.active::after {
+.tournament-navbar button.active::after {
   width: 100%;
 }
 
-.navbar button:hover::after {
+.tournament-navbar button:hover::after {
   width: 100%;
 }
 
-.navbar button.active {
-  color:#e06f06; /* Change color of active button */
+.tournament-navbar button.active {
+  color: #e06f06; /* Change color of active button */
   border-bottom: 2px solid #e06f06; /* Add underline to active button */
 }
-
 
 .container {
   font-size: 15px;
@@ -154,7 +147,6 @@
 }
 
 @media (min-width: 38em) {
-
   .container {
     font-size: 14px;
   }
@@ -191,8 +183,6 @@ h2 {
   margin-bottom: 2em;
 }
 
-
-
 .tournament-bracket {
   display: flex;
   flex-direction: column;
@@ -211,8 +201,6 @@ h2 {
   flex: 1;
 }
 
-
-
 .tournament-bracket__list {
   display: flex;
   flex-direction: column;
@@ -225,9 +213,6 @@ h2 {
   transition: padding 0.2s ease-in-out, margin 0.2s ease-in-out;
 }
 
-
-
-
 @media (min-width: 768px) {
   /* Assuming @breakpoint-sm = 768px */
   .tournament-bracket__list {
@@ -235,7 +220,6 @@ h2 {
     padding-bottom: 0;
     border-bottom: 0;
   }
- 
 }
 
 .tournament-bracket__round:last-child .tournament-bracket__list {
@@ -243,7 +227,6 @@ h2 {
 }
 
 .tournament-bracket__item {
- 
   display: flex;
   flex: 0 1 auto;
   justify-content: center;
@@ -253,20 +236,13 @@ h2 {
   padding: 2% 0;
   width: 48%;
   transition: padding 0.2s linear;
-  
 }
-
-
 
 .tournament-bracket__item:nth-child(even) {
   margin-left: 2%;
-  
 }
 
-
-
 /* Connecting the vertical line between items */
-
 
 @media (max-width: 576px) {
   /* Assuming @breakpoint-xs = 576px */
@@ -278,20 +254,19 @@ h2 {
 }
 
 @media (min-width: 768px) {
-  .tournament-bracket__round--gold .tournament-bracket__list li:last-child::after {
+  .tournament-bracket__round--gold
+    .tournament-bracket__list
+    li:last-child::after {
     content: none; /* This removes the line after the last card in the gold round */
-}
+  }
 
- 
-  
   /* Assuming @breakpoint-sm = 768px */
   .tournament-bracket__item {
     padding: 0.5em 1em;
     width: 100%;
     margin: 0;
-    height:auto;
+    height: auto;
   }
- 
 
   .tournament-bracket__item::after {
     position: absolute;
@@ -307,7 +282,6 @@ h2 {
     top: 70%;
     border-top: 2px solid #9e9e9e;
     transform: translateY(-1px);
-    
   }
 
   .tournament-bracket__item.tournament-bracket--rounded:nth-child(odd)::after {
@@ -327,10 +301,6 @@ h2 {
   .tournament-bracket__round:first-child .tournament-bracket__item {
     padding-left: 0;
   }
-
-  
-
- 
 
   .tournament-bracket__round:nth-last-child(2)
     .tournament-bracket__item::after {
@@ -367,8 +337,6 @@ h2 {
   transition: padding 0.2s ease-in-out, border 0.2s linear;
 }
 
-
-
 .tournament-bracket__match::before,
 .tournament-bracket__match::after {
   transition: all 0.2s linear;
@@ -383,21 +351,9 @@ h2 {
     background-color: #fff; /* Add a background color for visibility */
     margin-bottom: 30px; /* Adds space between match boxes */
     border-radius: 5px; /* Optional: rounds the corners */
-}
-
-
-
-
-
-
-
-  
-  
-  
-  
+  }
 
   .tournament-bracket__match::before {
-    
     bottom: 50%;
     border-bottom: 2px solid #9e9e9e;
     transform: translate(0, 100px);
@@ -604,7 +560,6 @@ h2 {
 
 @media (min-width: 768px) and (max-width: 992px) {
   /* Assuming @breakpoint-sm = 768px, @breakpoint-md = 992px */
- 
 
   .tournament-bracket__code {
     margin-top: 0.2em;
@@ -627,7 +582,7 @@ h2 {
   .tournament-bracket__code {
     padding: 0 0.25em;
   }
-  .winner-section{
+  .winner-section {
     margin-left: 30px;
   }
   .tournament-bracket__match {
@@ -637,9 +592,92 @@ h2 {
     padding: 1em;
     border: 1px solid transparent;
     border-radius: 1.5em;
+  }
+}
+.btn-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30%;
+}
+.home-btn {
+  border-radius: 10px;
+  min-height: 40px;
+  background-color: #d64e2e;
+  transition: all 0.3s ease-in-out;
+  min-width: 100px;
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+/*  */
+@media (max-width: 700px) {
+  .home-btn {
+    left: 20%;
+  }
 }
 
-
+.vertical-round {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
+.vertical-round .round {
+  display: flex;
+  flex-direction: column;
+}
 
+.vertical-round .seed {
+  margin: 10px 0;
+}
+
+.bracket-container {
+  display: flex;
+  justify-content: space-around; 
+  align-items: flex-start;
+  flex-wrap: wrap; 
+  gap: 40px;
+  margin: 20px;
+  width: 100%; 
+  overflow-x: auto; 
+}
+
+.bracket-section {
+  flex: 1;
+  min-width: 45%;
+  max-width: 48%; 
+  overflow-x: auto; 
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.tournament-bracket {
+  width: 100%;
+  min-width: 600px; 
+  overflow-x: auto;
+}
+
+.winner-section,
+.loser-section {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.winner-section h1,
+.loser-section h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .bracket-container {
+    flex-direction: column; 
+  }
+
+  .bracket-section {
+    max-width: 100%; 
+    overflow-x: scroll;
+  }
+}

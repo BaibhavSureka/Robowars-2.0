@@ -3,24 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/react-fontawesome": "^0.2.2",
-    "@g-loot/react-tournament-brackets": "^1.0.30",
-    "@react-hook/window-size": "^3.1.1",
-    "@react-spring/parallax": "^9.7.4",
-    "@supabase/supabase-js": "^2.45.3",
+    "@mediapipe/tasks-vision": "^0.10.15",
+    "@react-three/drei": "^9.112.0",
+    "@react-three/fiber": "^8.17.7",
+    "@supabase/supabase-js": "^2.45.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.7.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "framer-motion": "^11.2.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.52.2",
-    "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.26.1",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.1",
@@ -53,6 +47,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.4.5",
-    "tailwindcss": "^3.4.10"
+    "tailwindcss": "^3.4.10",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7"
   }
 }
